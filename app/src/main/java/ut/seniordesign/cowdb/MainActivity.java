@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv = (TextView) findViewById(R.id.textView);
         button = (Button) findViewById(R.id.button);
-        tv.setText(randomStr());
+        tv.setText("COWDB is revolutionary");
     }
 
     public void onClick(View view){
