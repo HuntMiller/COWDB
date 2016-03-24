@@ -4,38 +4,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
-    TextView tv;
-    Button button;
+    ListView listView;
+    ArrayList<String> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv = (TextView) findViewById(R.id.textView);
-        button = (Button) findViewById(R.id.button);
-        tv.setText("COWDB is revolutionary");
+
+        list = new ArrayList<>();
+        CustomAdapter adapter = new CustomAdapter(list, this);
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
+
+        Random rand = new Random();
+        generateButtons(rand.nextInt(10) + 1);
+
     }
 
-    public void onClick(View view){
-        switch(view.getId()){
-            case R.id.button:{
-                tv.setText(randomStr());
-                break;
-            }
+    public void generateButtons(int amt){
+        for(int i = 0; i < amt; i++){
+            list.add("template" + i);
         }
     }
 
-    protected String randomStr(){
-        String[] arr = {"great", "wonderful", "perfect", "awesome", "admirable", "amazing", "astonishing", "brilliant", "cool", "enjoyable", "excellent", "fabulous", "fantastic", "magnificent"};
-        Random rand = new Random();
-        String str = "COWDB is " + arr[rand.nextInt(arr.length + 1)];
-        return str;
-    }
 }
