@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
-        android:text="Template"
+        android:text=""
         android:background="@drawable/buttonshape"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"

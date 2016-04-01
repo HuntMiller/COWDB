@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter implements ListAdapter {
@@ -42,12 +44,11 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
         }
 
         Button templateBtn = (Button)view.findViewById(R.id.template_btn);
-
+        templateBtn.setText(list.get(position));
         templateBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //do something
-                list.remove(position); //or some other task
+                Toast.makeText(context, list.get(position) + " clicked", Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
             }
         });

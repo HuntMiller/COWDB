@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void generateButtons(int amt){
         for(int i = 0; i < amt; i++){
-            list.add("template" + i);
+            list.add("Button " + i);
         }
     }
 
