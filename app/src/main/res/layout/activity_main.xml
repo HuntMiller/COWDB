@@ -6,6 +6,11 @@
     tools:context="ut.seniordesign.cowdb.MainActivity"
     android:background="@drawable/rocket_logo">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"/>
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
