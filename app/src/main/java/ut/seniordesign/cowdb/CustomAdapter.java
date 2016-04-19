@@ -9,7 +9,14 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list = new ArrayList<>();
@@ -45,11 +52,32 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
 
         Button templateBtn = (Button)view.findViewById(R.id.template_btn);
         templateBtn.setText(list.get(position));
-        templateBtn.setOnClickListener(new View.OnClickListener(){
+        templateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, list.get(position) + " clicked", Toast.LENGTH_SHORT).show();
-                notifyDataSetChanged();
+                String url = "http://cowdb.kazeinc.com/redirect";
+                StringRequest stringRequest = new StringRequest(
+                        Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(context, "Posted: location=" + list.get(position), Toast.LENGTH_SHORT).show();
+                        notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, "Failed to post", Toast.LENGTH_SHORT).show();
+                        notifyDataSetChanged();
+                    }
+                }) {
+                    protected Map<String, String> getParams() {
+                        Map<String, String> MyData = new HashMap<String, String>();
+                        MyData.put("location", list.get(position));
+                        return MyData;
+                    }
+                };
+
+                MySingleton.getInstance(context).addToRequestQueue(stringRequest);
             }
         });
 
