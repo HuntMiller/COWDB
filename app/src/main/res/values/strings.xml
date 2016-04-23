@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">COWDB</string>
+    <string name="button_load">Load</string>
+    <string name="edit_message">Content for COWDB</string>
 </resources>

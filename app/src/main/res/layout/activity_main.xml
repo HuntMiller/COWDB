@@ -6,15 +6,30 @@
     tools:context="ut.seniordesign.cowdb.MainActivity"
     android:background="@drawable/rocket_logo">
 
-    <TextView
+    <EditText
+        style=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"/>
+        android:hint="@string/edit_message"
+        android:inputType="textWebEmailAddress"
+        android:singleLine="true"
+        android:id="@+id/edit_message"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_load"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/loadButton" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edit_message"
         android:id="@+id/listView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
