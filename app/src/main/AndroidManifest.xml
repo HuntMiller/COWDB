@@ -9,9 +9,9 @@
         android:icon="@mipmap/ut_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeNoActionBar">
+        android:theme="@style/AppThemeNoActionBar"
+        android:screenOrientation="portrait">
         <activity android:name=".MainActivity">
-            android:screenOrientation="portrait"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
