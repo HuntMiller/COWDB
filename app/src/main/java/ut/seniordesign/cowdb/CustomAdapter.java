@@ -21,8 +21,10 @@ import java.util.Map;
 public class CustomAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list = new ArrayList<>();
     private Context context;
+    private String myUrl;
 
-    public CustomAdapter(ArrayList<String> list, Context context) {
+    public CustomAdapter(String url, ArrayList<String> list, Context context) {
+        this.myUrl = url;
         this.list = list;
         this.context = context;
     }
@@ -55,7 +57,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
         templateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "http://cowdb.kazeinc.com/redirect";
+                String url = myUrl + "/redirect";
                 StringRequest stringRequest = new StringRequest(
                         Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
