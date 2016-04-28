@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
 
-        String defaultURL = "http://cowdb.kazeinc.com/endpoints";
+        String defaultURL = "http://172.31.247.168:5002";
         final EditText editText = (EditText) findViewById(R.id.edit_message);
         editText.setText(defaultURL);
 
@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = editText.getText().toString();
+                String s = editText.getText().toString();
+                final String url = s;
 
                 JsonObjectRequest jsObjectRequest = new JsonObjectRequest(
-                        Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                        Request.Method.GET, url + "/endpoints", null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             list.add(response.getString("alternate2"));
                             list.add(response.getString("alternate3"));
 
-                            CustomAdapter adapter = new CustomAdapter(list, context);
+                            CustomAdapter adapter = new CustomAdapter(url, list, context);
                             listView = (ListView) findViewById(R.id.listView);
                             listView.setAdapter(adapter);
 
